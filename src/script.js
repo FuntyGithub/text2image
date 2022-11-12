@@ -15,11 +15,20 @@ window.onload = function () {
         var text = decodeURIComponent(queryObject.text);
         var maxWidth = queryObject.maxWidth ? queryObject.maxWidth : 500;
         
-        // make website only return image
-        document.body.innerHTML = "";
-        var img = document.createElement("img");
-        img.src = textToImg(maxWidth, text);
-        document.body.appendChild(img);
+        // 
+        if(queryObject.type === "raw"){
+            
+            // make website only return data url
+            document.body.innerHTML = textToImg(maxWidth, text);
+
+        } else {
+
+            // make website only return image
+            document.body.innerHTML = "";
+            var img = document.createElement("img");
+            img.src = textToImg(maxWidth, text);
+            document.body.appendChild(img);
+        }
 
 
     } else {
